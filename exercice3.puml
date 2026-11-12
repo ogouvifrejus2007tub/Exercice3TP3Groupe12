@@ -1,0 +1,40 @@
+
+@startuml
+title Diagramme de classes UML - Gestion du personnel universitaire
+
+abstract class Employe {
+    - matricule : string
+    - nom : string
+    - prenom : string
+    - salaireBase : double
+    --
+    + calculerSalaire() : double
+    + afficherInformations() : void
+}
+
+class Enseignant {
+    - indemnite : double
+    --
+    + calculerSalaire() : double
+    + afficherInformations() : void
+}
+
+class AgentAdministratif {
+    - prime : double
+    --
+    + calculerSalaire() : double
+    + afficherInformations() : void
+}
+
+class Technicien {
+    - prime : double
+    --
+    + calculerSalaire() : double
+    + afficherInformations() : void
+}
+
+Employe <|-- Enseignant
+Employe <|-- AgentAdministratif
+Employe <|-- Technicien
+
+@enduml
