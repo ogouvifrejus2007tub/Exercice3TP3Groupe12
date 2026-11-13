@@ -1,0 +1,27 @@
+@startuml
+
+actor Etudiant
+participant Gestionnaire
+participant Systeme
+participant Chambre
+participant Attribution
+
+Etudiant -> Gestionnaire : Faire une demande de logement
+
+Gestionnaire -> Systeme : Enregistrer la demande
+
+Systeme -> Chambre : Verifier les places disponibles
+
+Chambre --> Systeme : Retourner la disponibilite
+
+alt Chambre disponible
+    Systeme -> Attribution : Creer une attribution
+    Attribution --> Systeme : Attribution enregistree
+    Systeme --> Gestionnaire : Confirmer l'attribution
+    Gestionnaire --> Etudiant : Informer l'etudiant
+else Chambre non disponible
+    Systeme --> Gestionnaire : Aucune place disponible
+    Gestionnaire --> Etudiant : Informer l'etudiant
+end
+
+@enduml
