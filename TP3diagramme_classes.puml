@@ -1,0 +1,54 @@
+@startuml
+
+class Etudiant {
+    - matricule : String
+    - nom : String
+    - prenom : String
+    - filiere : String
+    + faireDemande()
+}
+
+class Residence {
+    - idResidence : int
+    - nom : String
+    - adresse : String
+    + consulterChambres()
+}
+
+class Batiment {
+    - idBatiment : int
+    - nom : String
+}
+
+class Chambre {
+    - numero : int
+    - capacite : int
+    - nombreOccupants : int
+    + verifierDisponibilite()
+}
+
+class DemandeHebergement {
+    - idDemande : int
+    - dateDemande : String
+    - statut : String
+    + enregistrerDemande()
+    + accepterDemande()
+    + refuserDemande()
+}
+
+class Attribution {
+    - idAttribution : int
+    - dateEntree : String
+    - dateSortie : String
+    + attribuerChambre()
+    + enregistrerDepart()
+}
+
+Residence "1" -- "1..*" Batiment
+Batiment "1" -- "1..*" Chambre
+Etudiant "1" -- "0..*" DemandeHebergement
+DemandeHebergement "1" -- "0..1" Attribution
+Chambre "1" -- "0..*" Attribution
+Etudiant "1" -- "0..*" Attribution
+
+@enduml
