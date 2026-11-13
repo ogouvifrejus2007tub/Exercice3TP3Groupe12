@@ -1,0 +1,13 @@
+@startuml
+
+abstract class Employe
+
+class Enseignant
+class AgentAdministratif
+class Technicien
+
+Employe <|-- Enseignant
+Employe <|-- AgentAdministratif
+Employe <|-- Technicien
+
+@enduml
