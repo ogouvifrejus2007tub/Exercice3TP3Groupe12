@@ -1,0 +1,13 @@
+
+@startuml
+
+actor Administrateur
+participant "Systeme de gestion" as Systeme
+participant "Employe" as Employe
+
+Administrateur -> Systeme : Ajouter un employe
+Systeme -> Employe : Enregistrer les informations
+Employe --> Systeme : Confirmation
+Systeme --> Administrateur : Afficher le resultat
+
+@enduml
