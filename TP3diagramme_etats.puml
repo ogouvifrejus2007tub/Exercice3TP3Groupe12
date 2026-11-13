@@ -1,0 +1,17 @@
+@startuml
+
+[*] --> En_attente : Soumettre une demande
+
+En_attente --> Acceptee : Demande acceptée
+
+En_attente --> Refusee : Demande refusée
+
+Acceptee --> Chambre_attribuee : Attribuer une chambre
+
+Chambre_attribuee --> Terminee : Enregistrer le départ
+
+Refusee --> [*]
+
+Terminee --> [*]
+
+@enduml
