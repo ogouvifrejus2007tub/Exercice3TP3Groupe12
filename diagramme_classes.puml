@@ -1,37 +1,54 @@
-
 @startuml
 
-abstract class Employe {
-    - matricule : string
-    - nom : string
-    - prenom : string
-    - salaireBase : double
-
-    + Employe(matricule : string, nom : string, prenom : string, salaireBase : double)
-    + calculerSalaire() : double
-    + afficherInformations() : void
+class Etudiant {
+    - matricule : String
+    - nom : String
+    - prenom : String
+    - filiere : String
+    + faireDemande()
 }
 
-class Enseignant {
-    - indemnite : double
-
-    + calculerSalaire() : double
+class Residence {
+    - idResidence : int
+    - nom : String
+    - adresse : String
+    + consulterChambres()
 }
 
-class AgentAdministratif {
-    - prime : double
-
-    + calculerSalaire() : double
+class Batiment {
+    - idBatiment : int
+    - nom : String
 }
 
-class Technicien {
-    - prime : double
-
-    + calculerSalaire() : double
+class Chambre {
+    - numero : int
+    - capacite : int
+    - nombreOccupants : int
+    + verifierDisponibilite()
 }
 
-Employe <|-- Enseignant
-Employe <|-- AgentAdministratif
-Employe <|-- Technicien
+class DemandeHebergement {
+    - idDemande : int
+    - dateDemande : String
+    - statut : String
+    + enregistrerDemande()
+    + accepterDemande()
+    + refuserDemande()
+}
+
+class Attribution {
+    - idAttribution : int
+    - dateEntree : String
+    - dateSortie : String
+    + attribuerChambre()
+    + enregistrerDepart()
+}
+
+Residence "1" -- "1..*" Batiment
+Batiment "1" -- "1..*" Chambre
+Etudiant "1" -- "0..*" DemandeHebergement
+DemandeHebergement "1" -- "0..1" Attribution
+Chambre "1" -- "0..*" Attribution
+Etudiant "1" -- "0..*" Attribution
 
 @enduml
